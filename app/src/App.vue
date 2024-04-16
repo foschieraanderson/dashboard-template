@@ -1,10 +1,12 @@
 <script setup lang="ts">
+    import { RouterView } from 'vue-router'
+    
 </script>
 
 <template>
-  <div class="bg-zinc-900 flex justify-center items-center">
-      <h1 class="text-white">Hello World</h1>
-  </div>
+    <main>
+        <RouterView />
+    </main>
 </template>
 
 <style scoped>
