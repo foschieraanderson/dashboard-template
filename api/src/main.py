@@ -1,6 +1,14 @@
 from fastapi import FastAPI
 
-app = FastAPI()
+
+def ApplicationFactory() -> FastAPI:
+    """Init App Factory FastAPI"""
+    application = FastAPI()
+
+    return application
+
+
+app = ApplicationFactory()
 
 
 @app.get("/")
