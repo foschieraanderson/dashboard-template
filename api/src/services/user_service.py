@@ -1,3 +1,4 @@
+from src.providers.security import password_hash
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.repository.user_repository import UserRepository
@@ -10,4 +11,6 @@ class UserService:
         self.repository = UserRepository(session)
 
     async def create(self, data: UserSchema) -> UserResponse:
-        return await self.repository.create(data)
+        user = data.copy()
+        user.password = password_hash(data.password)
+        return await self.repository.create(user)
