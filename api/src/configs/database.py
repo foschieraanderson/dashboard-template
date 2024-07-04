@@ -1,7 +1,7 @@
 import contextlib
 from typing import Any, AsyncIterator
 
-from app.configs.settings import settings
+from src.configs.settings import settings
 from sqlalchemy.ext.asyncio import (
     AsyncConnection,
     AsyncSession,
@@ -50,7 +50,7 @@ class DatabaseSessionManager:
             await session.close()
 
 
-sessionmanager = DatabaseSessionManager(settings.DATABASE_URL, {"echo": settings.echo_sql})
+sessionmanager = DatabaseSessionManager(settings.DATABASE_URL)
 
 
 async def db_session():
