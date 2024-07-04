@@ -14,7 +14,11 @@ class Settings(BaseSettings):
     DATABASE_URL: str
     SECRET_KEY: str
     DEBUG: bool
-    ENV_MODE: EnvMode
+    ENV_MODE: EnvMode | int
+    MARIADB_USER: str
+    MARIADB_ROOT_PASSWORD: str
+    MARIADB_PASSWORD: str
+    MARIADB_DATABASE: str
 
 
 settings = Settings()  # type: ignore
