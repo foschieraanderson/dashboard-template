@@ -1,3 +1,5 @@
+from typing import List, Optional
+from pydantic import UUID4
 from src.providers.security import password_hash
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -14,3 +16,9 @@ class UserService:
         user = data.copy()
         user.password = password_hash(data.password)
         return await self.repository.create(user)
+
+    async def get_all(self) -> List[Optional[UserResponse]]:
+        return await self.repository.get_all()
+
+    async def get_by_id(self, _id: UUID4) -> UserResponse:
+        return await self.repository.get_by_id(_id)
