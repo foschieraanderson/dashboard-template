@@ -13,11 +13,11 @@ ENV PYTHONDONTWRITEBYTECODE=1
 
 # Add and configure poetry to manage the dependencies
 RUN pip install poetry
-COPY ./pyproject.toml ./poetry.lock* /home/${APPNAME}/${WORKDIR}/
+COPY ./pyproject.toml ./poetry.lock* /home/${APPNAME}${WORKDIR}/
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
 # # Install the runtime dependencies using pip
-RUN pip install --no-cache-dir --upgrade -r /home/${APPNAME}/${WORKDIR}/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /home/${APPNAME}${WORKDIR}/requirements.txt
 
 # Copy the source code to the container
 COPY . .
