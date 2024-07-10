@@ -23,3 +23,6 @@ class User:
     updated_at: Mapped[datetime] = mapped_column(
         init=False, default=func.now()
     )
+
+    class Config:
+        orm_mode = True
